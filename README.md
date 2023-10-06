@@ -1,27 +1,16 @@
-# React + TypeScript + Vite
+# Intro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repo contains the results from my second attempt to genearte a POC for the following [idea](https://handsome-femur-998.notion.site/TBD-d2425bb47fc1408e90e4ab928590f0bb?pvs=4) using [smol developer](https://github.com/smol-ai/developer).
 
-Currently, two official plugins are available:
+To the first attempt can be found [here](https://github.com/ermartinez13/poc-with-smol-v1/tree/main).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Improving The Prompt
 
-## Expanding the ESLint configuration
+Okay, its round 2! Our target improvements are:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- generate .tsx files
+- persist data to local storage
+- use keyboard bindings to trigger actions (eg. forms, timer)
+- update model properties to avoid ambiguity
+- clarify internal state flow of Timer component
+- render list items as data rows
