@@ -3,7 +3,7 @@ import { Status, Task, MicroTask } from "./models";
 import TaskList from "./components/TaskList";
 import { MicroTaskList } from "./components/MicroTaskList";
 import Timer from "./components/Timer";
-import BarGraph from "./components/BarGraph";
+// import BarGraph from "./components/BarGraph";
 import { TaskCreateForm, MicroTaskCreateForm } from "./components/CreateForm";
 
 export const AppContext = React.createContext({});
@@ -74,7 +74,7 @@ function App() {
             selectedMicroTaskId={selectedMicroTaskId}
           />
         )}
-        <BarGraph tasks={tasks} />
+        {/* <BarGraph tasks={tasks} /> */}
         <TaskCreateForm onSubmit={handleSubmitTaskForm} />
         {selectedTaskId && (
           <MicroTaskCreateForm
