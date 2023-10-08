@@ -1,0 +1,40 @@
+{
+  "name": "pomodoro-task-timer",
+  "version": "1.0.0",
+  "description": "A single page web application that consolidates aspects of a pomodoro timer, a to-do list, and a time tracker.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/user/repo.git"
+  },
+  "keywords": [
+    "pomodoro",
+    "task",
+    "timer",
+    "todolist",
+    "tracker"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/user/repo/issues"
+  },
+  "homepage": "https://github.com/user/repo#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "14.x"
+  },
+  "private": true
+}
