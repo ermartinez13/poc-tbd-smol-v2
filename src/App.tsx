@@ -59,7 +59,11 @@ function App() {
         value={{ microTasks, selectedTaskId, handleMicroTaskClick }}
       >
         <div>
-          <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
+          <TaskList
+            tasks={tasks}
+            handleTaskClick={handleTaskClick}
+            selectedTaskId={selectedTaskId}
+          />
           {selectedTaskId && (
             <MicroTaskList
               taskId={selectedTaskId}

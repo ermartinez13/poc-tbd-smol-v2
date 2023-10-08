@@ -3,7 +3,7 @@ import { Task, Status } from "../models";
 
 interface TaskListProps {
   tasks: Task[];
-  selectedTaskId: string;
+  selectedTaskId: string | null;
   handleTaskClick: (taskId: string) => void;
 }
 
