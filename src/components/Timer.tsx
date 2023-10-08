@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { MicroTask, Status } from '../models/MicroTask';
+import React, { useState, useEffect } from "react";
+import { MicroTask, Status } from "../models";
 
 interface TimerProps {
   selectedMicroTask: MicroTask;
   onUpdateMicroTask: (microTask: MicroTask) => void;
 }
 
-const Timer: React.FC<TimerProps> = ({ selectedMicroTask, onUpdateMicroTask }) => {
+const Timer: React.FC<TimerProps> = ({
+  selectedMicroTask,
+  onUpdateMicroTask,
+}) => {
   const [timeElapsed, setTimeElapsed] = useState(selectedMicroTask.timeSpent);
   const [timeBudget, setTimeBudget] = useState(selectedMicroTask.timeBudget);
   const [isActive, setIsActive] = useState(false);
@@ -55,13 +58,25 @@ const Timer: React.FC<TimerProps> = ({ selectedMicroTask, onUpdateMicroTask }) =
   return (
     <div id="timer">
       <h2>{selectedMicroTask.name}</h2>
-      <p>{timeElapsed} / {timeBudget}</p>
+      <p>
+        {timeElapsed} / {timeBudget}
+      </p>
       <fieldset disabled={selectedMicroTask.status === Status.Done}>
-        <button id="start-button" onClick={handleStart}>Start</button>
-        <button id="stop-button" onClick={handleStop}>Stop</button>
-        <button id="extend-button" onClick={handleExtend}>Extend</button>
-        <button id="reset-button" onClick={handleReset}>Reset</button>
-        <button id="complete-button" onClick={handleComplete}>Complete</button>
+        <button id="start-button" onClick={handleStart}>
+          Start
+        </button>
+        <button id="stop-button" onClick={handleStop}>
+          Stop
+        </button>
+        <button id="extend-button" onClick={handleExtend}>
+          Extend
+        </button>
+        <button id="reset-button" onClick={handleReset}>
+          Reset
+        </button>
+        <button id="complete-button" onClick={handleComplete}>
+          Complete
+        </button>
       </fieldset>
     </div>
   );
