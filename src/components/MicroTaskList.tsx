@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "../App";
-import { MicroTask } from "../models";
+import { MicroTask, Status } from "../models";
 
 export const MicroTaskList = () => {
   const { microTasks, selectedTaskId, handleMicroTaskClick } =
@@ -19,7 +19,10 @@ export const MicroTaskList = () => {
           id={`microtask-${microTask.id}`}
           onClick={() => handleMicroTaskClick(microTask.id)}
         >
-          {microTask.name}
+          <span>{microTask.name} </span>
+          <span>{microTask.status === Status.Done ? "Done" : "Active"} </span>
+          <span>{microTask.timeSpent} </span>
+          <span>{microTask.timeBudget}</span>
         </div>
       ))}
     </div>

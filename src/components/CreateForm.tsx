@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Status, Task } from "../models";
+import { MicroTask, Status, Task } from "../models";
 
 const TaskCreateForm = ({ onSubmit }: { onSubmit: (task: Task) => void }) => {
   const [name, setName] = useState("");
@@ -47,7 +47,13 @@ const TaskCreateForm = ({ onSubmit }: { onSubmit: (task: Task) => void }) => {
   );
 };
 
-const MicroTaskCreateForm = ({ taskId }) => {
+const MicroTaskCreateForm = ({
+  taskId,
+  onSubmit,
+}: {
+  taskId: string;
+  onSubmit: (microTask: MicroTask) => void;
+}) => {
   const [name, setName] = useState("");
   const [timeBudget, setTimeBudget] = useState(0);
 
@@ -62,10 +68,7 @@ const MicroTaskCreateForm = ({ taskId }) => {
       timeSpent: 0,
     };
 
-    // Dispatch the MICROTASK_CREATED event with the microTask object
-    window.dispatchEvent(
-      new CustomEvent("MICROTASK_CREATED", { detail: microTask })
-    );
+    onSubmit(microTask);
 
     // Reset form fields
     setName("");
