@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect, useCallback } from 'react';
+import { Status, Task, MicroTask } from './models';
+import TaskList from './components/TaskList';
+import MicroTaskList from './components/MicroTaskList';
+import Timer from './components/Timer';
+import BarGraph from './components/BarGraph';
+import { TaskCreateForm, MicroTaskCreateForm } from './components/CreateForm';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [microTasks, setMicroTasks] = useState<MicroTask[]>([]);
+  const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
+  const [selectedMicroTaskId, setSelectedMicroTaskId] = useState<string | null>(null);
+
+  const handleTaskClick = useCallback((taskId: string) => {
+    setSelectedTaskId(taskId);
+    setSelectedMicroTaskId(null);
+  }, []);
+
+  const handleMicroTaskClick = useCallback((microTaskId: string) => {
+    setSelectedMicroTaskId(microTaskId);
+  }, []);
+
+  const handleSubmitTaskForm = useCallback((task: Task) => {
+    setTasks(prev => [...prev, task]);
+  }, []);
+
+  const handleSubmitMicroTaskForm = useCallback((microTask: MicroTask) => {
+    setMicroTasks(prev => [...prev, microTask]);
+  }, []);
+
+  const saveData = useCallback(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('microTasks', JSON.stringify(microTasks));
+  }, [tasks, microTasks]);
+
+  const loadData = useCallback(() => {
+    const storedTasks = localStorage.getItem('tasks');
+    const storedMicroTasks = localStorage.getItem('microTasks');
+    if (storedTasks) setTasks(JSON.parse(storedTasks));
+    if (storedMicroTasks) setMicroTasks(JSON.parse(storedMicroTasks));
+  }, []);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  useEffect(() => {
+    saveData();
+  }, [saveData]);
 
   return (
-    <>
+    <div>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
+        {selectedTaskId && <MicroTaskList taskId={selectedTaskId} microTasks={microTasks} onMicroTaskClick={handleMicroTaskClick} />}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      {selectedTaskId && selectedMicroTaskId && <Timer selectedTaskId={selectedTaskId} selectedMicroTaskId={selectedMicroTaskId} />}
+      <BarGraph tasks={tasks} />
+      <TaskCreateForm onSubmit={handleSubmitTaskForm} />
+      {selectedTaskId && <MicroTaskCreateForm taskId={selectedTaskId} onSubmit={handleSubmitMicroTaskForm} />}
+    </div>
+  );
 }
 
-export default App
+export default App;
