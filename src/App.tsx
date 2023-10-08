@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Status, Task, MicroTask } from "./models";
 import TaskList from "./components/TaskList";
-import MicroTaskList from "./components/MicroTaskList";
+import { MicroTaskList } from "./components/MicroTaskList";
 import Timer from "./components/Timer";
 import BarGraph from "./components/BarGraph";
 import { TaskCreateForm, MicroTaskCreateForm } from "./components/CreateForm";
