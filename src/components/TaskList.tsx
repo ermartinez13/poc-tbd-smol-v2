@@ -21,10 +21,10 @@ const TaskList: React.FC<TaskListProps> = ({
           className={`task ${selectedTaskId === task.id ? "selected" : ""}`}
           onClick={() => handleTaskClick(task.id)}
         >
-          <span>{task.name}</span>
-          <span>{task.status === Status.Done ? "Done" : "Active"}</span>
-          <span>{task.defaultMicroBudget}</span>
-          <span>{task.timeSpent}</span>
+          <span>{task.name} </span>
+          <span>{task.status === Status.Done ? "Done" : "Active"} </span>
+          <span>{task.defaultMicroBudget} </span>
+          <span>{task.timeSpent} </span>
           <span>{task.timeBudget}</span>
         </div>
       ))}

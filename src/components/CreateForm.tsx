@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Status } from "../models";
+import { Status, Task } from "../models";
 
-const TaskCreateForm = () => {
+const TaskCreateForm = ({ onSubmit }: { onSubmit: (task: Task) => void }) => {
   const [name, setName] = useState("");
   const [defaultMicroBudget, setDefaultMicroBudget] = useState(0);
   const [timeBudget, setTimeBudget] = useState(0);
@@ -18,8 +18,7 @@ const TaskCreateForm = () => {
       timeBudget,
     };
 
-    // Dispatch the TASK_CREATED event with the task object
-    window.dispatchEvent(new CustomEvent("TASK_CREATED", { detail: task }));
+    onSubmit(task);
 
     // Reset form fields
     setName("");
@@ -41,13 +40,6 @@ const TaskCreateForm = () => {
         value={defaultMicroBudget}
         onChange={(e) => setDefaultMicroBudget(e.target.value)}
         placeholder="Default MicroTask Budget"
-        required
-      />
-      <input
-        type="number"
-        value={timeBudget}
-        onChange={(e) => setTimeBudget(e.target.value)}
-        placeholder="Time Budget"
         required
       />
       <button type="submit">Create Task</button>
