@@ -4,6 +4,8 @@ This repo contains the results from my second attempt to genearte a POC for the 
 
 To the first attempt can be found [here](https://github.com/ermartinez13/poc-with-smol-v1/tree/main).
 
+To see and play around with version 2 of the generated application, checkout [this](https://codesandbox.io/p/github/ermartinez13/poc-with-smol-v2/main?workspaceId=ce2ee9c5-9e3c-4906-8a66-51ac2d9f846b) codesandbox.
+
 # Improving The Prompt
 
 Okay, its round 2! Our target improvements are:
